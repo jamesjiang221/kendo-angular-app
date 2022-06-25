@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { categories } from './data.categories';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'kendo-angular-app';
+  
+  public dropDownItems = categories;
+  public defaultItem = {
+    text: "Filter by Category",
+    value: null
+  };
 }
