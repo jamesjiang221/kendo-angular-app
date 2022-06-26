@@ -16,12 +16,14 @@ import { Observable } from "rxjs";
 export class AppComponent {
   title = 'kendo-angular-app';
   
+  // Filter by category
   public dropDownItems = categories;
   public defaultItem = {
     text: "Filter by Category",
     value: null
   };
   
+  // Grid Display
   public gridItems: Observable<GridDataResult> | undefined;
   public pageSize: number = 10;
   public skip: number = 0;
@@ -48,6 +50,16 @@ export class AppComponent {
 
   public handleSortChange(descriptor: SortDescriptor[]): void {
     this.sortDescriptor = descriptor;
+    this.loadGridItems();
+  }
+
+  // Grid Filter Handle
+  public handleFilterChange(item: {
+    text: string;
+    value: number | 0;
+  }): void {
+    this.filterTerm = item.value;
+    this.skip = 0;
     this.loadGridItems();
   }
 }
